@@ -78,6 +78,7 @@ class _HomeState extends State<Home> {
                       child: ListView.builder(
                           itemCount: article.length,
                           shrinkWrap: true,
+                          physics: ClampingScrollPhysics(),
                           itemBuilder: (context, index) {
                             return BlogTile(
                               imageUrl: article[index].urlToImage,
