@@ -51,39 +51,41 @@ class _HomeState extends State<Home> {
                 child: CircularProgressIndicator(),
               ),
             )
-          : Container(
-              child: Column(
-                children: <Widget>[
-                  ///categories
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    height: 70,
-                    child: ListView.builder(
-                        itemCount: categories.length,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return CategoryTile(
-                            imageUrl: categories[index].imageUrl,
-                            categoryName: categories[index].categoryName,
-                          );
-                        }),
-                  ),
+          : SingleChildScrollView(
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    ///categories
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      height: 70,
+                      child: ListView.builder(
+                          itemCount: categories.length,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return CategoryTile(
+                              imageUrl: categories[index].imageUrl,
+                              categoryName: categories[index].categoryName,
+                            );
+                          }),
+                    ),
 
-                  ///Blogs
-                  Container(
-                    child: ListView.builder(
-                        itemCount: article.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return BlogTile(
-                            imageUrl: article[index].urlToImage,
-                            title: article[index].title,
-                            desc: article[index].description,
-                          );
-                        }),
-                  )
-                ],
+                    ///Blogs
+                    Container(
+                      child: ListView.builder(
+                          itemCount: article.length,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return BlogTile(
+                              imageUrl: article[index].urlToImage,
+                              title: article[index].title,
+                              desc: article[index].description,
+                            );
+                          }),
+                    )
+                  ],
+                ),
               ),
             ),
     );
