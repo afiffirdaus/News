@@ -1,5 +1,6 @@
 import 'package:News/helper/data.dart';
 import 'package:News/models/article_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:News/models/category_model.dart';
 import 'package:News/helper/news.dart';
@@ -53,11 +54,11 @@ class _HomeState extends State<Home> {
             )
           : SingleChildScrollView(
               child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: <Widget>[
                     ///categories
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
                       height: 70,
                       child: ListView.builder(
                           itemCount: categories.length,
@@ -73,6 +74,7 @@ class _HomeState extends State<Home> {
 
                     ///Blogs
                     Container(
+                      padding: EdgeInsets.only(top: 16),
                       child: ListView.builder(
                           itemCount: article.length,
                           shrinkWrap: true,
@@ -106,8 +108,8 @@ class CategoryTile extends StatelessWidget {
           children: <Widget>[
             ClipRRect(
               borderRadius: BorderRadius.circular(6),
-              child: Image.network(
-                imageUrl,
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
                 width: 120,
                 height: 60,
                 fit: BoxFit.cover,
@@ -142,8 +144,28 @@ class BlogTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 16),
       child: Column(
-        children: <Widget>[Image.network(imageUrl), Text(title), Text(desc)],
+        children: <Widget>[
+          ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Image.network(imageUrl)),
+          SizedBox(
+            height: 8,
+          ),
+          Text(title,
+              style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w500)),
+          SizedBox(
+            height: 8,
+          ),
+          Text(
+            desc,
+            style: TextStyle(color: Colors.grey),
+          )
+        ],
       ),
     );
   }
