@@ -15,7 +15,9 @@ class News {
     var jsonData = jsonDecode(response.body);
 
     if (jsonData['status'] == "ok") {
-      jsonData["articles"].forEach((element) {});
+      jsonData["articles"].forEach((element) {
+        if (element["urlToImage"] != null && element['description'] != null) {}
+      });
     }
   }
 }
