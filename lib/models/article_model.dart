@@ -6,11 +6,12 @@ class ArticleModel {
   String urlToImage;
   String content;
 
-  ArticleModel(
-      {this.author,
-      this.title,
-      this.url,
-      this.description,
-      this.content,
-      this.urlToImage});
+  ArticleModel({
+    this.author,
+    this.title,
+    this.url,
+    this.description,
+    this.content,
+    this.urlToImage,
+  });
 }
